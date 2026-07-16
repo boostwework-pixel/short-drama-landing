@@ -1,0 +1,1074 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>XXXX - Free Short Dramas</title>
+  <meta name="description" content="Watch trending short dramas for free on XXXX. Check in daily to claim cash rewards.">
+  <style>
+    :root {
+      --bg: #09070d;
+      --panel: #17111f;
+      --panel-2: #21172b;
+      --ink: #fff8f2;
+      --muted: #c8b9cf;
+      --line: rgba(255, 255, 255, 0.12);
+      --hot: #ff3d57;
+      --gold: #ffca45;
+      --violet: #7b4dff;
+      --cyan: #41d4ff;
+      --green: #22c55e;
+      --shadow: 0 24px 70px rgba(0, 0, 0, 0.45);
+      --radius: 8px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      padding-bottom: 92px;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 12% 8%, rgba(255, 61, 87, 0.34), transparent 28%),
+        radial-gradient(circle at 84% 10%, rgba(123, 77, 255, 0.36), transparent 26%),
+        linear-gradient(180deg, #09070d 0%, #130b18 46%, #08060b 100%);
+      line-height: 1.55;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      border-bottom: 1px solid var(--line);
+      background: rgba(9, 7, 13, 0.82);
+      backdrop-filter: blur(18px);
+    }
+
+    .nav {
+      width: min(1140px, calc(100% - 40px));
+      height: 68px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 900;
+      letter-spacing: 0;
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--hot), var(--gold));
+      color: #17050a;
+      box-shadow: 0 14px 30px rgba(255, 61, 87, 0.35);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .nav-links a:hover {
+      color: #fff;
+    }
+
+    .nav-download,
+    .download-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 0 18px;
+      border-radius: 8px;
+      color: #21070d;
+      background: linear-gradient(135deg, var(--gold), #ff8a2a);
+      font-weight: 900;
+      box-shadow: 0 14px 30px rgba(255, 202, 69, 0.24);
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+      background-size: 72px 72px;
+      mask-image: linear-gradient(180deg, #000 0%, transparent 78%);
+    }
+
+    .hero-inner {
+      position: relative;
+      width: min(1140px, calc(100% - 40px));
+      min-height: calc(100vh - 68px);
+      margin: 0 auto;
+      padding: 72px 0 58px;
+      display: grid;
+      grid-template-columns: minmax(0, 0.98fr) minmax(360px, 1.02fr);
+      align-items: center;
+      gap: 56px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 18px;
+      padding: 7px 12px;
+      border: 1px solid rgba(255, 202, 69, 0.26);
+      border-radius: 999px;
+      background: rgba(255, 202, 69, 0.1);
+      color: #ffe7a0;
+      font-size: 13px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 720px;
+      margin: 0;
+      font-size: clamp(44px, 7vw, 86px);
+      line-height: 0.95;
+      letter-spacing: 0;
+    }
+
+    .highlight {
+      color: var(--gold);
+    }
+
+    .hero-copy {
+      max-width: 610px;
+      margin: 24px 0 0;
+      color: var(--muted);
+      font-size: 20px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 34px;
+    }
+
+    .download-button {
+      min-height: 56px;
+      padding: 0 26px;
+      transition: transform 0.18s ease, filter 0.18s ease;
+    }
+
+    .download-button:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.06);
+    }
+
+    .secondary-link {
+      display: inline-flex;
+      min-height: 56px;
+      align-items: center;
+      justify-content: center;
+      padding: 0 22px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      color: #fff;
+      background: rgba(255, 255, 255, 0.06);
+      font-weight: 800;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .pill {
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--line);
+    }
+
+    .poster-stage {
+      position: relative;
+      min-height: 560px;
+    }
+
+    .phone {
+      position: absolute;
+      inset: 0 64px 0 auto;
+      width: min(340px, 72vw);
+      min-height: 560px;
+      padding: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 30px;
+      background: linear-gradient(180deg, #2b1b39, #0e0913);
+      box-shadow: var(--shadow);
+    }
+
+    .phone-screen {
+      height: 100%;
+      min-height: 528px;
+      overflow: hidden;
+      border-radius: 22px;
+      background:
+        linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.86) 84%),
+        linear-gradient(135deg, #ff3d57 0%, #7b4dff 52%, #10121d 100%);
+      position: relative;
+    }
+
+    .phone-top {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      right: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .short-video {
+      position: absolute;
+      inset: 58px 16px 138px;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(0, 0, 0, 0.5)),
+        linear-gradient(135deg, #4526ff, #ff315c 56%, #ffca45);
+    }
+
+    .actor {
+      position: absolute;
+      bottom: 0;
+      width: 42%;
+      height: 76%;
+      border-radius: 42% 42% 0 0;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(255, 205, 188, 0.65));
+      filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.34));
+    }
+
+    .actor::before {
+      content: "";
+      position: absolute;
+      top: -34px;
+      left: 50%;
+      width: 72px;
+      height: 72px;
+      transform: translateX(-50%);
+      border-radius: 50%;
+      background: #ffe2c8;
+      box-shadow: inset 0 -18px 0 rgba(84, 36, 45, 0.24);
+    }
+
+    .actor-left {
+      left: 18px;
+      background: linear-gradient(180deg, #fff1e4, #4c2336);
+    }
+
+    .actor-right {
+      right: 18px;
+      background: linear-gradient(180deg, #dbe8ff, #271b58);
+    }
+
+    .video-caption {
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      bottom: 18px;
+      padding: 14px;
+      border-radius: 8px;
+      background: rgba(0, 0, 0, 0.58);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+    }
+
+    .video-caption b {
+      display: block;
+      font-size: 18px;
+      line-height: 1.2;
+    }
+
+    .video-caption span {
+      color: #ffdbe1;
+      font-size: 13px;
+    }
+
+    .phone-bottom {
+      position: absolute;
+      left: 16px;
+      right: 16px;
+      bottom: 18px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .episode-row {
+      display: grid;
+      grid-template-columns: 42px 1fr auto;
+      align-items: center;
+      gap: 10px;
+      padding: 10px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.11);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .thumb {
+      height: 42px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--gold), var(--hot));
+    }
+
+    .episode-row b {
+      display: block;
+      font-size: 13px;
+    }
+
+    .episode-row span {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .live-badge {
+      color: #fff;
+      background: var(--hot);
+      border-radius: 999px;
+      padding: 4px 8px;
+      font-size: 11px;
+      font-weight: 900;
+    }
+
+    .reward-card,
+    .rank-card {
+      position: absolute;
+      width: 240px;
+      padding: 18px;
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      box-shadow: 0 20px 48px rgba(0, 0, 0, 0.28);
+      backdrop-filter: blur(18px);
+    }
+
+    .reward-card {
+      left: 0;
+      top: 54px;
+    }
+
+    .rank-card {
+      right: 0;
+      bottom: 52px;
+    }
+
+    .reward-card strong,
+    .rank-card strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 24px;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .reward-card span,
+    .rank-card span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    section {
+      padding: 86px 0;
+    }
+
+    .section-inner {
+      width: min(1140px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .section-head {
+      max-width: 720px;
+      margin-bottom: 34px;
+    }
+
+    .section-head h2 {
+      margin: 0 0 12px;
+      font-size: clamp(30px, 5vw, 52px);
+      line-height: 1.05;
+      letter-spacing: 0;
+    }
+
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .drama-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .drama-card {
+      min-height: 330px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.13);
+      border-radius: var(--radius);
+      overflow: hidden;
+      position: relative;
+      background: var(--panel);
+      box-shadow: 0 18px 44px rgba(0, 0, 0, 0.24);
+    }
+
+    .drama-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, transparent 18%, rgba(0, 0, 0, 0.82) 100%),
+        var(--poster);
+      z-index: 0;
+    }
+
+    .drama-card > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .tag {
+      width: max-content;
+      margin-bottom: 10px;
+      padding: 5px 9px;
+      border-radius: 999px;
+      background: rgba(255, 61, 87, 0.92);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .drama-card h3 {
+      margin: 0 0 6px;
+      font-size: 20px;
+      line-height: 1.15;
+    }
+
+    .drama-card p {
+      margin: 0;
+      color: #eadceb;
+      font-size: 14px;
+    }
+
+    .rewards {
+      background:
+        linear-gradient(180deg, rgba(255, 202, 69, 0.1), rgba(255, 255, 255, 0.02)),
+        rgba(255, 255, 255, 0.03);
+      border-block: 1px solid var(--line);
+    }
+
+    .reward-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .reward-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .reward-item {
+      display: grid;
+      grid-template-columns: 52px 1fr;
+      gap: 14px;
+      align-items: center;
+      padding: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.07);
+    }
+
+    .reward-icon {
+      width: 52px;
+      height: 52px;
+      display: grid;
+      place-items: center;
+      border-radius: 8px;
+      color: #201007;
+      background: linear-gradient(135deg, var(--gold), #ff8a2a);
+      font-weight: 900;
+      font-size: 20px;
+    }
+
+    .reward-item b {
+      display: block;
+      margin-bottom: 2px;
+      font-size: 18px;
+    }
+
+    .reward-item span {
+      color: var(--muted);
+    }
+
+    .cash-panel {
+      min-height: 420px;
+      padding: 26px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: var(--radius);
+      background:
+        radial-gradient(circle at 22% 18%, rgba(255, 202, 69, 0.34), transparent 28%),
+        linear-gradient(135deg, #2f163a, #140a1d);
+      box-shadow: var(--shadow);
+    }
+
+    .cash-panel h3 {
+      margin: 0 0 12px;
+      font-size: clamp(30px, 5vw, 52px);
+      line-height: 1.05;
+    }
+
+    .cash-panel p {
+      margin: 0 0 24px;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .checkin-board {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+
+    .day {
+      min-height: 78px;
+      display: grid;
+      place-items: center;
+      gap: 2px;
+      padding: 10px 6px;
+      border-radius: 8px;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .day b {
+      display: block;
+      color: #fff;
+      font-size: 18px;
+    }
+
+    .day.hot {
+      color: #241005;
+      background: linear-gradient(135deg, var(--gold), #ff8a2a);
+    }
+
+    .day.hot b {
+      color: #241005;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .step {
+      padding: 22px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .step-num {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 18px;
+      border-radius: 50%;
+      color: #17050a;
+      background: var(--gold);
+      font-weight: 900;
+    }
+
+    .step h3 {
+      margin: 0 0 8px;
+      font-size: 21px;
+    }
+
+    .step p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .final-cta {
+      padding: 34px;
+      border-radius: var(--radius);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      background:
+        linear-gradient(135deg, rgba(255, 61, 87, 0.22), rgba(123, 77, 255, 0.2)),
+        var(--panel);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 22px;
+      align-items: center;
+    }
+
+    .final-cta h2 {
+      margin: 0 0 8px;
+      font-size: clamp(28px, 5vw, 48px);
+      line-height: 1.08;
+    }
+
+    .final-cta p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    footer {
+      padding: 34px 0;
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+      font-size: 14px;
+    }
+
+    .footer-inner {
+      width: min(1140px, calc(100% - 40px));
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .download-popup {
+      position: fixed;
+      z-index: 50;
+      left: 50%;
+      bottom: 16px;
+      width: min(720px, calc(100% - 28px));
+      transform: translateX(-50%);
+      display: grid;
+      grid-template-columns: 54px 1fr auto;
+      gap: 14px;
+      align-items: center;
+      padding: 12px;
+      border-radius: 8px;
+      background: rgba(23, 17, 31, 0.94);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(18px);
+    }
+
+    .app-icon {
+      width: 54px;
+      height: 54px;
+      display: grid;
+      place-items: center;
+      border-radius: 8px;
+      color: #21070d;
+      background: linear-gradient(135deg, var(--gold), var(--hot));
+      font-weight: 900;
+    }
+
+    .popup-copy b {
+      display: block;
+      line-height: 1.2;
+    }
+
+    .popup-copy span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .popup-button {
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 18px;
+      border-radius: 8px;
+      color: #21070d;
+      background: linear-gradient(135deg, var(--gold), #ff8a2a);
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    @media (max-width: 940px) {
+      .hero-inner,
+      .reward-layout,
+      .final-cta {
+        grid-template-columns: 1fr;
+      }
+
+      .poster-stage {
+        min-height: 570px;
+      }
+
+      .phone {
+        left: 50%;
+        right: auto;
+        transform: translateX(-50%);
+      }
+
+      .reward-card {
+        left: 0;
+        top: 24px;
+      }
+
+      .rank-card {
+        right: 0;
+        bottom: 20px;
+      }
+
+      .drama-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .steps {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 620px) {
+      body {
+        padding-bottom: 116px;
+      }
+
+      .nav {
+        width: min(100% - 24px, 1140px);
+      }
+
+      .nav-links a:not(.nav-download) {
+        display: none;
+      }
+
+      .hero-inner,
+      .section-inner,
+      .footer-inner {
+        width: min(100% - 24px, 1140px);
+      }
+
+      .hero-actions a {
+        width: 100%;
+      }
+
+      .poster-stage {
+        min-height: 520px;
+      }
+
+      .phone {
+        width: min(310px, 90vw);
+        min-height: 500px;
+      }
+
+      .phone-screen {
+        min-height: 468px;
+      }
+
+      .short-video {
+        bottom: 128px;
+      }
+
+      .reward-card,
+      .rank-card {
+        width: 190px;
+        padding: 14px;
+      }
+
+      .reward-card strong,
+      .rank-card strong {
+        font-size: 20px;
+      }
+
+      section {
+        padding: 62px 0;
+      }
+
+      .drama-grid,
+      .checkin-board {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .drama-card {
+        min-height: 260px;
+      }
+
+      .download-popup {
+        grid-template-columns: 46px 1fr;
+      }
+
+      .app-icon {
+        width: 46px;
+        height: 46px;
+      }
+
+      .popup-button {
+        grid-column: 1 / -1;
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <nav class="nav" aria-label="Primary navigation">
+      <a class="brand" href="#">
+        <span class="brand-mark">X</span>
+        <span>XXXX</span>
+      </a>
+      <div class="nav-links">
+        <a href="#trending">Trending</a>
+        <a href="#rewards">Rewards</a>
+        <a href="#download">Download</a>
+        <a class="nav-download" href="https://download.example.com/your-software-installer.exe" download>Get App</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-inner">
+        <div>
+          <div class="eyebrow">Hot short dramas are streaming now</div>
+          <h1>Watch viral short dramas <span class="highlight">for free</span>.</h1>
+          <p class="hero-copy">
+            XXXX brings addictive bite-size drama episodes to your phone. Stream trending stories anytime, unlock fresh episodes daily, and check in to claim cash rewards.
+          </p>
+          <div class="hero-actions">
+            <a class="download-button" href="https://download.example.com/your-software-installer.exe" download>Download Now</a>
+            <a class="secondary-link" href="#trending">See What's Hot</a>
+          </div>
+          <div class="hero-meta">
+            <span class="pill">Free to watch</span>
+            <span class="pill">Daily check-in rewards</span>
+            <span class="pill">Short episodes</span>
+          </div>
+        </div>
+
+        <div class="poster-stage" aria-label="Short drama promotional preview">
+          <div class="phone">
+            <div class="phone-screen">
+              <div class="phone-top">
+                <span>XXXX</span>
+                <span>FREE</span>
+              </div>
+              <div class="short-video">
+                <div class="actor actor-left"></div>
+                <div class="actor actor-right"></div>
+                <div class="video-caption">
+                  <b>The comeback episode everyone is watching</b>
+                  <span>Episode 18 unlocked today</span>
+                </div>
+              </div>
+              <div class="phone-bottom">
+                <div class="episode-row">
+                  <div class="thumb"></div>
+                  <div>
+                    <b>CEO's Secret Bride</b>
+                    <span>2.8M views</span>
+                  </div>
+                  <span class="live-badge">HOT</span>
+                </div>
+                <div class="episode-row">
+                  <div class="thumb"></div>
+                  <div>
+                    <b>Revenge in 60 Seconds</b>
+                    <span>New episodes daily</span>
+                  </div>
+                  <span class="live-badge">NEW</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="reward-card">
+            <strong>Cash</strong>
+            <span>Check in daily and claim reward opportunities inside the app.</span>
+          </div>
+          <div class="rank-card">
+            <strong>Top 1</strong>
+            <span>Fast-paced romance, revenge, family secrets, and more.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="rewards" id="rewards">
+      <div class="section-inner reward-layout">
+        <div>
+          <div class="section-head">
+            <h2>Watch free. Check in. Claim cash rewards.</h2>
+            <p>Make the download offer simple and direct: users can enjoy free short dramas and return every day for check-in rewards.</p>
+          </div>
+          <div class="reward-list">
+            <div class="reward-item">
+              <div class="reward-icon">$</div>
+              <div>
+                <b>Daily check-in rewards</b>
+                <span>Open the app, check in, and collect reward opportunities.</span>
+              </div>
+            </div>
+            <div class="reward-item">
+              <div class="reward-icon">0</div>
+              <div>
+                <b>Free drama watching</b>
+                <span>Start watching viral short dramas without a paywall on the landing page promise.</span>
+              </div>
+            </div>
+            <div class="reward-item">
+              <div class="reward-icon">7</div>
+              <div>
+                <b>Come back every day</b>
+                <span>Fresh episodes and daily reward reminders help users keep returning.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cash-panel">
+          <h3>Daily reward streak</h3>
+          <p>Use this section to promote sign-in cash rewards. Amounts and rules can be adjusted later based on your actual app policy.</p>
+          <div class="checkin-board">
+            <div class="day hot"><b>$</b>Day 1</div>
+            <div class="day"><b>$</b>Day 2</div>
+            <div class="day"><b>$</b>Day 3</div>
+            <div class="day hot"><b>2X</b>Day 4</div>
+            <div class="day"><b>$</b>Day 5</div>
+            <div class="day"><b>$</b>Day 6</div>
+            <div class="day hot"><b>VIP</b>Day 7</div>
+            <div class="day"><b>+</b>More</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="trending">
+      <div class="section-inner">
+        <div class="section-head">
+          <h2>Trending dramas made for quick watching.</h2>
+          <p>Open XXXX when you have a few minutes. Start an episode, follow the plot twist, and keep watching without paying upfront.</p>
+        </div>
+
+        <div class="drama-grid">
+          <article class="drama-card" style="--poster: linear-gradient(135deg, #ff315c, #4918ff);">
+            <span class="tag">Hot</span>
+            <h3>Hidden Heiress Returns</h3>
+            <p>A rejected daughter comes back with power and a secret.</p>
+          </article>
+          <article class="drama-card" style="--poster: linear-gradient(135deg, #ffca45, #ff3d57 54%, #241433);">
+            <span class="tag">Free</span>
+            <h3>Married to the Billionaire</h3>
+            <p>A flash marriage turns into a dangerous love game.</p>
+          </article>
+          <article class="drama-card" style="--poster: linear-gradient(135deg, #41d4ff, #7b4dff 58%, #100b18);">
+            <span class="tag">New</span>
+            <h3>Revenge After Dark</h3>
+            <p>Every short episode reveals another betrayal.</p>
+          </article>
+          <article class="drama-card" style="--poster: linear-gradient(135deg, #22c55e, #10121d 48%, #ff8a2a);">
+            <span class="tag">Popular</span>
+            <h3>The Runaway Wife</h3>
+            <p>She disappeared once. Now everyone wants her back.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="download">
+      <div class="section-inner">
+        <div class="section-head">
+          <h2>Start watching in three steps.</h2>
+          <p>Keep the path short so visitors know exactly what happens after tapping the download button.</p>
+        </div>
+        <div class="steps">
+          <article class="step">
+            <div class="step-num">1</div>
+            <h3>Download XXXX</h3>
+            <p>Tap the download button and install the latest version of the app.</p>
+          </article>
+          <article class="step">
+            <div class="step-num">2</div>
+            <h3>Open trending dramas</h3>
+            <p>Browse hot short episodes, romance plots, revenge stories, and daily updates.</p>
+          </article>
+          <article class="step">
+            <div class="step-num">3</div>
+            <h3>Check in for rewards</h3>
+            <p>Return every day to check in and claim available cash reward opportunities.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-inner">
+        <div class="final-cta">
+          <div>
+            <h2>Download XXXX and watch short dramas free.</h2>
+            <p>Replace this link with your official installer URL when the download package is ready.</p>
+          </div>
+          <a class="download-button" href="https://download.example.com/your-software-installer.exe" download>Download Now</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <span>Copyright 2026 XXXX. All rights reserved.</span>
+      <span>Contact: support@example.com | Privacy Policy | Terms</span>
+    </div>
+  </footer>
+
+  <aside class="download-popup" aria-label="Download XXXX">
+    <div class="app-icon">X</div>
+    <div class="popup-copy">
+      <b>XXXX - Free short dramas</b>
+      <span>Watch viral episodes and check in for cash rewards.</span>
+    </div>
+    <a class="popup-button" href="https://download.example.com/your-software-installer.exe" download>Download</a>
+  </aside>
+</body>
+</html>
